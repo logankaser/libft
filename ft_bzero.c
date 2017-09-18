@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/18 11:32:35 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 12:17:51 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/18 12:15:45 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/18 12:19:44 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memset(void *ptr, int value, size_t num)
+void	bzero(void *s, size_t n)
 {
-	ptr = malloc(num);
-	if (ptr)
-		while (num)
-			*((char *)ptr + num--) = (char)value;
-	return (ptr);
+	while (n)
+		*((char *)s + n--) = 0;
 }
