@@ -6,17 +6,17 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:32:35 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 12:17:51 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/18 19:14:51 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memset(void *ptr, int value, size_t num)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
-	ptr = malloc(num);
-	if (ptr)
-		while (num)
-			*((char *)ptr + num--) = (char)value;
+	char *b;
+	b = (char *)ptr;
+	while (num--)
+		*b++ = (char)value;
 	return (ptr);
 }

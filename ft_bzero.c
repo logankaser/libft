@@ -6,14 +6,16 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 12:15:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 12:19:44 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/18 18:32:54 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	while (n)
-		*((char *)s + n--) = 0;
+	char * str;
+	str = (char *)s;
+	while (n--)
+		*str++ = '\0';
 }

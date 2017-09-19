@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
+/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/11 10:35:59 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 15:34:43 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/18 18:45:43 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/18 19:26:33 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
+#include <stdlib.h>
+
+void *ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (!*str)
-		return (0);
-	while (*str)
-	{
-		if (*str < 'A' || (*str > 'Z' && *str < 'a') || *str > 'z')
-			return (0);
-		++str;
-	}
-	return (1);
+	char *b;
+	b= (char *)dest;
+	while(n--)
+		*b++ = *((char *)src++);
+	return (dest);
 }

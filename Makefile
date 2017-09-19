@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/20 13:52:57 by lkaser            #+#    #+#              #
-#    Updated: 2017/09/18 12:20:42 by lkaser           ###   ########.fr        #
+#    Updated: 2017/09/18 15:28:52 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,22 @@ LIST = *ft*
 SRC = $(addsuffix .c, $(LIST))
 OBJ = $(addsuffix .o, $(LIST))
 
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(CFLAGS) $(SRC)
+	gcc $(CFLAGS) -c $(SRC)
 	ar rcs libft.a $(OBJ)
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME).a
+	rm -f $(NAME).a test
 
 re: fclean all
 
+test: fclean all
+	gcc $(CFLAGS) libft.a test.c -o test
+	./test
