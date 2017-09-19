@@ -6,56 +6,78 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:01:52 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 19:27:23 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 13:00:39 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void	str_is(char * s, size_t b)
+void	putstr(char *str)
 {
-	write(1, "str = \"", 7);
-	write(1, s, b);
+	while(*str)
+		write(1, str++, 1);
+}
+
+void	putstrln(char *str)
+{
+	putstr(str);
+	write(1, "\n", 1);
+}
+
+void	show(char *varname, void *var, size_t bytes)
+{
+	unsigned i;
+	char *str = (char *)var;
+	putstr(varname);
+	write(1, " = \"", 4);
+	i = 0;
+	while(i < bytes)
+	{
+		if (str[i])
+			write(1, str + i, 1);
+		else
+			write(1, ".", 1);
+		++i;
+	}
 	write(1, "\"\n", 2);
 }
 
-int	main(void)
+int		main(void)
 {
-	char *str = 0;
+	char *mem;
 	char *src = "apple";
-	printf("\n** ft_memset **\n\n");
-	printf("str is 8 byte string..\n");
-	str = (char *)malloc(8);
-	str[7] = '\0';
-	printf("Calling ft_memset(str, 'a', 7)\n");
-	ft_memset(str, 'a', 7);
-	printf("str = \"%s\"\n", str);
-	printf("Calling ft_memset(str, 'z', 3)\n");
-	ft_memset(str, 'z', 3);
-	printf("str = \"%s\"\n", str);
+
+	putstrln("\n** ft_memset **\n");
+	mem = (char *)malloc(7);
+	putstrln("mem is 7 bytes..");
+	show("mem", mem, 7);
+	putstrln("Calling ft_memset(mem, 'a', 7)");
+	ft_memset(mem, 'a', 7);
+	show("mem", mem, 7);
+	putstrln("Calling ft_memset(str, 'z', 3)");
+	ft_memset(mem, 'z', 3);
+	show("mem", mem, 7);
 
 	printf("\n** ft_isalpha **\n\n");
-	printf("ft_isalpha('a') = %i\n", ft_isalpha("aaa"));
-	printf("ft_isalpha(\"BBB\") = %i\n", ft_isalpha("BBB"));
-	printf("ft_isalpha('1') = %i\n", ft_isalpha("1"));
-	printf("ft_isalpha('') = %i\n", ft_isalpha(""));
-	printf("ft_isalpha(\"123\") = %i\n", ft_isalpha("123"));
+	printf("ft_isalpha('a') = %i\n", ft_isalpha('a'));
+	printf("ft_isalpha('1') = %i\n", ft_isalpha('1'));
+	printf("ft_isalpha('\\0') = %i\n", ft_isalpha('\0'));
 
-	printf("\n** ft_bzero **\n\n");
-	str_is(str, 7);
-	printf("Calling ft_bzero(str, 2)\n");
-	ft_bzero(str, 2);
-	str_is(str, 7);
-	printf("Calling ft_bzero(str, 7)\n");
-	ft_bzero(str, 7);
-	str_is(str, 7);
+	putstrln("\n** ft_bzero **\n");
+	show("mem", mem, 7);
+	putstrln("Calling ft_bzero(str, 2)");
+	ft_bzero(mem, 2);
+	show("mem", mem, 7);
+	putstrln("Calling ft_bzero(str, 7)");
+	ft_bzero(mem, 7);
+	show("mem", mem, 7);
 	
-	printf("\n** ft_memcpy **\n\n");
-	printf("src = \"apple\"\n");
-	str_is(str, 7);
-	printf("Calling ft_memcpy(str, src, 5)");
-	ft_memcpy(str, src, 5);
-	str_is(str, 7);
+	putstrln("\n** ft_memcpy **\n");
+	show("mem", mem, 7);
+	show("str", src, 5);
+	putstrln("Calling ft_memcpy(mem, src, 5)");
+	ft_memcpy(mem, src, 5);
+	show("mem", mem, 7);
 	return (0);
 }

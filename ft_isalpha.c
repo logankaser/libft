@@ -6,19 +6,13 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 10:35:59 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 15:34:43 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 12:59:21 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
+int	ft_isalpha(int c)
 {
-	if (!*str)
+	if (c < 'A' || (c > 'Z' && c < 'a') || c > 'z')
 		return (0);
-	while (*str)
-	{
-		if (*str < 'A' || (*str > 'Z' && *str < 'a') || *str > 'z')
-			return (0);
-		++str;
-	}
 	return (1);
 }
