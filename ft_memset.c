@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:32:35 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/18 19:14:51 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 21:12:02 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	*ft_memset(void *ptr, int value, size_t num)
 {
 	char *b;
+
 	b = (char *)ptr;
 	while (num--)
 		*b++ = (char)value;

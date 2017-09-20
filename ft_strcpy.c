@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 18:15:19 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 18:27:50 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 21:10:47 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ char	*ft_strcpy(char *dst, const char *src)
 	char *c;
 
 	c = dst;
-	while(*src)
+	while (*src)
 		*c++ = *src++;
 	*c = '\0';
 	return (dst);

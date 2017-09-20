@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 18:48:39 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 18:56:29 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 21:11:31 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 char	*ft_strncat(char *dst, const char *src, size_t size)
 {
-	char *ch;
-	unsigned i;
+	char		*ch;
+	unsigned	i;
 
 	ch = dst;
 	i = 0;
-
 	while (*ch)
 		++ch;
-	while(i < size && src[i])
+	while (i < size && src[i])
 	{
 		ch[i] = src[i];
 		++i;

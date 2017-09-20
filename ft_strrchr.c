@@ -6,13 +6,13 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 19:43:50 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 20:07:06 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 21:04:42 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strrchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
 	unsigned i;
 
