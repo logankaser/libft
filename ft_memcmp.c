@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 17:00:32 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 21:12:42 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 08:46:27 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	b = (unsigned char *)s2;
 	i = 0;
 	if (n < 1)
-		return (NULL);
+		return (0);
 	while (i < n)
 	{
 		if (a[i] < b[i])
@@ -31,5 +31,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 			return (a[i] - b[i]);
 		++i;
 	}
-	return (NULL);
+	return (0);
 }

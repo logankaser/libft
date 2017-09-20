@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:01:52 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 16:28:42 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 09:13:40 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	putstr(char *str)
 {
-	while(*str)
+	while (*str)
 		write(1, str++, 1);
 }
 
@@ -28,12 +28,14 @@ void	putstrln(char *str)
 
 void	show(char *varname, void *var, size_t bytes)
 {
-	unsigned i;
-	char *str = (char *)var;
+	unsigned	i;
+	char		*str;
+
+	str = (char *)var;
 	putstr(varname);
 	write(1, " = \"", 4);
 	i = 0;
-	while(i < bytes)
+	while (i < bytes)
 	{
 		if (str[i])
 			write(1, str + i, 1);
@@ -73,7 +75,7 @@ int		main(void)
 	putstrln("Calling ft_bzero(str, 7)");
 	ft_bzero(mem, 7);
 	show("mem", mem, 7);
-	
+
 	putstrln("\n** ft_memcpy **\n");
 	show("mem", mem, 7);
 	show("str", src, 5);

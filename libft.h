@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 18:45:34 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 11:00:20 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	*ft_strncpy(char *dst, const char *src, size_t size);
 char	*ft_strcat(char *dst, const char *src);
 char	*ft_strncat(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strchr(const char *src, int val);
-char	*ft_strrchr(const char *src, int val);
-char	*ft_strstr(const char *src, const char *needle);
-char	*ft_strnstr(const char *src, const char *needle, size_t size);
-int		ft_strcmp(const char *s1, const char *s2);
-int		ft_strncmp(const char *s1, const char *s2, size_t size);
+char	*ft_strchr(const char *str, int val);
+char	*ft_strrchr(const char *str, int val);
+char	*ft_strstr(const char *str, const char *needle);
+char	*ft_strnstr(const char *str, const char *needle, size_t size);
+int		ft_strcmp(const char *a, const char *b);
+int		ft_strncmp(const char *a, const char *b, size_t size);
 int		ft_atoi(const char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

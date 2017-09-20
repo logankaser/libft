@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 20:09:17 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 08:56:16 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/20 09:35:25 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/20 09:43:58 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *str, const char *needle)
+int	ft_strcmp(const char *a, const char *b)
 {
-	unsigned i;
-
-	if (!*needle)
-		return ((char *)str);
-	while (*str)
+	while (*a || *b)
 	{
-		i = 0;
-		while (str[i] && str[i] == needle[i])
-		{
-			if (!needle[i + 1])
-				return ((char *)str);
-			++i;
-		}
-		++str;
+		if (*a != *b)
+			return (*(unsigned char *)a - *(unsigned char *)b);
+		++a;
+		++b;
 	}
-	return (NULL);
+	return (0);
 }
