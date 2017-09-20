@@ -6,12 +6,13 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:01:52 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 13:00:39 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/19 16:28:42 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <strings.h>
 
 void	putstr(char *str)
 {
@@ -78,6 +79,22 @@ int		main(void)
 	show("str", src, 5);
 	putstrln("Calling ft_memcpy(mem, src, 5)");
 	ft_memcpy(mem, src, 5);
+	show("mem", mem, 7);
+
+	memset(mem, 0, 7);
+	putstrln("\n** ft_memccpy **\n");
+	show("mem", mem, 7);
+	show("str", src, 5);
+	putstrln("Calling ft_memccpy(mem, src, 5)");
+	ft_memccpy(mem, src, 'l', 5);
+	show("mem", mem, 7);
+
+	memset(mem, 0, 7);
+	putstrln("\n** ft_memmov **\n");
+	show("mem", mem, 7);
+	show("str", src, 5);
+	putstrln("Calling ft_memmov(mem, src, 5)");
+	ft_memmove(mem, src, 5);
 	show("mem", mem, 7);
 	return (0);
 }
