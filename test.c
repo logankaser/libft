@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:01:52 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 09:13:40 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 17:14:31 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	show(char *varname, void *var, size_t bytes)
 		++i;
 	}
 	write(1, "\"\n", 2);
+}
+
+void	plus2(char *c)
+{
+	*c += 2;
 }
 
 int		main(void)
@@ -98,5 +103,8 @@ int		main(void)
 	putstrln("Calling ft_memmov(mem, src, 5)");
 	ft_memmove(mem, src, 5);
 	show("mem", mem, 7);
+
+	ft_striter(mem, plus2);
+	show("mem", mem, 5);
 	return (0);
 }

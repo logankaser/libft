@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 11:00:20 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 11:35:12 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,29 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ptr);
+char	*ft_strnew(size_t size);
+void	ft_strdel(char **str);
+void	ft_strclr(char *str);
+void	ft_striter(char *str, void (*f)(char *));
+void	ft_striteri(char *str, void (*f)(unsigned int, char *));
+char	*ft_strmap(char const *str, char (*f)(char));
+char	*ft_strmapi(char const *str, char (*f)(unsigned int, char));
+int		ft_strequ(char const *a, char const *b);
+int		ft_strnequ(char const *a, char const *b, size_t n);
+char	*ft_strsub(char const *str, unsigned int start, size_t len);
+char	*ft_strjoin(char const *a, char const *b);
+char	*ft_strtrim(char const *str);
+char	**ft_strsplit(char const *str, char c);
+char	*ft_itoa(int n);
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
+void	ft_putendl(char const *s);
+void	ft_putnbr(int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
