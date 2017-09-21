@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 16:46:49 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 18:15:39 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/20 20:41:21 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(const char *str, char (*fn)(unsigned, char))
 {
-	char *new;
-	unsigned i;
+	char		*new;
+	unsigned	i;
 
 	i = ft_strlen(str);
 	new = malloc(i + 1);

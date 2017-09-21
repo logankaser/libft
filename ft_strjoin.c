@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 11:23:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 20:24:06 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/20 20:38:49 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/20 21:02:51 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strjoin(char const *a, char const *b)
 {
-	return ((char *)ft_memalloc(size + 1));
+	char *cat;
+	char *c;
+	unsigned len;
+
+	len = ft_strlen(a) + ft_strlen(b);
+	cat = (char *)malloc(len + 1);
+	if (!cat)
+		return(0);
+	cat[len] = '\0';
+	c = cat;
+	while (*a)
+		*c++ = *a++;
+	while (*b)
+		*c++ = *b++;
+	return(cat);
 }

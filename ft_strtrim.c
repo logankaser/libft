@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 11:23:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 20:24:06 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/20 21:03:48 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/20 21:25:20 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+static int	ws(char c)
 {
-	return ((char *)ft_memalloc(size + 1));
+	return (c == ' ' || c == '\n' || c == '\t');
+}
+
+char	*ft_strtrim(char const *str)
+{
 }
