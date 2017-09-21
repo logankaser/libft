@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 13:56:01 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/21 14:45:55 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# define NULL_GUARD(a) if(!a) return (NULL);
 
 void	*ft_memset(void *ptr, int val, size_t n);
 void	ft_bzero(void *ptr, size_t b);

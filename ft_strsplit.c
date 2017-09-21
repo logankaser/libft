@@ -6,11 +6,11 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 19:30:04 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 13:30:36 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/21 14:46:39 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int		word_size(const char *chr, char d)
 {
@@ -49,8 +49,7 @@ char			**ft_strsplit(const char *str, const char d)
 
 	size = num_words(str, d) + 1;
 	split_words = (char **)malloc(sizeof(char*) * size);
-	if (!split_words)
-		return (NULL);
+	NULL_GUARD(split_words);
 	w = 0;
 	while (w < size)
 	{
@@ -58,8 +57,7 @@ char			**ft_strsplit(const char *str, const char d)
 			++str;
 		w_size = word_size(str, d);
 		split_words[w] = (char *)malloc(w_size);
-		if (!split_words[w])
-			return (NULL);
+		NULL_GUARD(split_words[w]);
 		split_words[w][w_size] = '\0';
 		chr = 0;
 		while (chr < w_size)
