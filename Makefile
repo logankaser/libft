@@ -6,12 +6,12 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/20 13:52:57 by lkaser            #+#    #+#              #
-#    Updated: 2017/09/19 14:07:11 by lkaser           ###   ########.fr        #
+#    Updated: 2017/09/21 10:15:32 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = libft
+NAME = libft.a
 LIST = *ft*
 
 SRC = $(addsuffix .c, $(LIST))
@@ -21,18 +21,22 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+$(OBJ): $(SRC)
 	gcc $(CFLAGS) -c $(SRC)
-	ar rcs libft.a $(OBJ)
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f libft.a test
+	rm -f $(NAME) test
 
-re: fclean all
+re:	fclean all
 
 test: fclean all
 	gcc $(CFLAGS) libft.a test.c -o test
 	./test
+
+.PHONY: clean fclean all re
