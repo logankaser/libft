@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 14:48:28 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 15:01:55 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/21 15:07:07 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putstr_fd(char const *str, int fd)
 {
-	while(*str)
+	while (*str)
 		write(fd, str++, 1);
 }
