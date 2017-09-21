@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 11:23:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 20:24:06 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/21 14:03:11 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 
 char	*ft_strnew(size_t size)
 {
-	return ((char *)ft_memalloc(size + 1));
+	char *new;
+	unsigned i;
+
+	new = (char *)malloc(++size);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (i < size)
+		new[i++] = '\0';
+	return (new);
 }
