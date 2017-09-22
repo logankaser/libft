@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/20 13:52:57 by lkaser            #+#    #+#              #
-#    Updated: 2017/09/21 10:15:32 by lkaser           ###   ########.fr        #
+#    Updated: 2017/09/22 16:07:46 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,5 @@ fclean: clean
 	rm -f $(NAME) test
 
 re:	fclean all
-
-test: fclean all
-	gcc $(CFLAGS) libft.a test.c -o test
-	./test
 
 .PHONY: clean fclean all re
