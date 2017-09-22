@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 14:38:16 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 14:40:29 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/21 17:59:13 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char			*ft_itoa(int nbr)
 	int		count;
 
 	size = digits(nbr) + 1;
-	out = malloc(sizeof(char) * size);
+	out = (char *)malloc(sizeof(char) * size);
 	if (!out)
 		return (NULL);
 	count = 0;

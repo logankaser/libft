@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/21 14:36:41 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 18:32:01 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/21 17:38:19 by lkaser            #+#    #+#             */
+/*   Updated: 2017/09/21 18:45:52 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	write(1, &c, 1);
+	t_list *new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	NULL_GUARD(new);
+	if (!content)
+	{
+		new->content = NULL;
+		new->content_size = 0;
+	}
+   	else 
+	{
+		new->content = (void *)malloc(content_size);
+		NULL_GUARD(new->content);
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }
