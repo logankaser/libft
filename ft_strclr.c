@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 11:37:02 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 11:38:07 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 11:42:24 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_strclr(char *str)
 {
-	ft_bzero(str, ft_strlen(str));
+	if (str)
+		ft_bzero(str, ft_strlen(str));
 }

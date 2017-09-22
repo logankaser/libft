@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 21:03:48 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 12:38:30 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 12:03:12 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char		*ft_strtrim(char const *str)
 	int		len;
 	char	*trimmed;
 
+	NULL_GUARD(str);
 	len = 0;
 	while (*str && ws(*str))
 		++str;

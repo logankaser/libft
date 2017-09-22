@@ -6,17 +6,13 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 12:15:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 21:08:46 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 11:31:48 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *m, size_t n)
 {
-	char *str;
-
-	str = (char *)s;
-	while (n--)
-		*str++ = '\0';
+	ft_memset(m, 0, n);
 }

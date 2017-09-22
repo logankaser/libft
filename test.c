@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 15:01:52 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 15:13:20 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 11:33:26 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	plus2(char *c)
 int			main(void)
 {
 	char	*mem;
-	char	*src;
+	char	src[5];
 
 	src[0] = 'a';
 	src[1] = 'p';

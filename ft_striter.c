@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 16:46:49 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/20 16:56:35 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 11:43:14 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_striter(char *str, void (*fn)(char *))
 {
-	while (*str)
-		fn(str++);
+	if (str && fn)
+		while (*str)
+			fn(str++);
 }

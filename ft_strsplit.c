@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 19:30:04 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 18:08:01 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/22 12:21:58 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ static size_t	num_words(const char *str, char d)
 	return (num);
 }
 
+static void		walk(const char **str, const char d)
+{
+	const char *walk;
+
+	walk = *str;
+	while (*walk == d)
+		++walk;
+	*str = walk;
+}
+
 char			**ft_strsplit(const char *str, const char d)
 {
 	char		**split_words;
@@ -47,14 +57,14 @@ char			**ft_strsplit(const char *str, const char d)
 	unsigned	w;
 	unsigned	chr;
 
+	NULL_GUARD(str);
 	size = num_words(str, d) + 1;
 	split_words = (char **)malloc(sizeof(char*) * size);
 	NULL_GUARD(split_words);
 	w = 0;
 	while (w < size)
 	{
-		while (*str == d)
-			++str;
+		walk(&str, d);
 		w_size = word_size(str, d);
 		split_words[w] = (char *)malloc(w_size);
 		NULL_GUARD(split_words[w]);
