@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 09:08:27 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/21 18:31:06 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/09/28 16:46:28 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		render_nbr(int nb)
 		render_nbr(nb % 10);
 	}
 	else
-		ft_putchar((nb > 0 ? nb : nb * -1) + 48);
+		ft_putchar((nb > 0 ? nb : nb * -1) + '0');
 }
 
 void			ft_putnbr(int nb)
