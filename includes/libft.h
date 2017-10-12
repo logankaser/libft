@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/11 21:56:23 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/10/12 15:44:13 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define NULL_GUARD(a) if(!a) return (NULL);
-# TRUE 1;
-# FALSE 0;
 
 void				*ft_memset(void *ptr, int val, size_t n);
 void				ft_bzero(void *ptr, size_t b);
@@ -81,9 +79,10 @@ typedef struct		s_list
 }					t_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstdelone(t_list **lst, void (*del)(void *, size_t));
+void				ft_lstdel(t_list **lst, void (*del)(void *, size_t));
+void				ft_lstadd(t_list **lst, t_list *new);
+t_list				*ft_lstfind(t_list *lst, int (*pred)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 

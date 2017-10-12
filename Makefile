@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/20 13:52:57 by lkaser            #+#    #+#              #
-#    Updated: 2017/09/22 16:07:46 by lkaser           ###   ########.fr        #
+#    Updated: 2017/10/12 15:43:15 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIST = *ft*
 SRC = $(addsuffix .c, $(LIST))
 OBJ = $(addsuffix .o, $(LIST))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I includes/
 
 all: $(NAME)
 
