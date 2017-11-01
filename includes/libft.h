@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/01 16:05:51 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/11/01 16:13:43 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,15 @@ void				ft_putmem(char *varname, void *var, size_t bytes);
 int					ft_sumarray(int *int_array, size_t size);
 
 # define GNL_BUFF 1024
+
 int					get_next_line(const int fd, char **line);
 
-typedef	struct	s_fileinfo
+typedef	struct		s_fileinfo
 {
-	int			fd;
-	long		i;
-	long		fill;
-	char		buff[GNL_BUFF + 1];
-}				t_fileinfo;
+	int				fd;
+	long			i;
+	long			fill;
+	char			buff[GNL_BUFF + 1];
+}					t_fileinfo;
 
 #endif

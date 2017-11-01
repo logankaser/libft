@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 17:52:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 12:56:24 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/11/01 16:16:15 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlen(const char *str)
 {
 	size_t len;
 
-	if (!str)
-		return (0);
 	len = 0;
 	while (*str++)
 		++len;

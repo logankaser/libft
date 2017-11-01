@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 20:38:49 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 14:38:45 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/11/01 16:25:08 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*ft_strjoin(char const *a, char const *b)
 	char		*c;
 	unsigned	len;
 
-	len = ft_strlen(a) + ft_strlen(b);
-	c = malloc(len + 1);
+	len = (a ? ft_strlen(a) : 0) + (b ? ft_strlen(b) : 0);
+	NULL_GUARD(c = malloc(len + 1));
 	c[len] = '\0';
 	if (a)
 		while (*a)
