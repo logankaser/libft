@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 17:52:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 12:56:24 by lkaser           ###   ########.fr       */
+/*   Created: 2017/10/05 12:56:54 by lkaser            #+#    #+#             */
+/*   Updated: 2017/10/05 13:05:38 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
+unsigned	ft_sqrt(unsigned nbr)
 {
-	size_t len;
+	unsigned i;
 
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	i = 0;
+	while (i * i < nbr)
+		++i;
+	return (i);
 }

@@ -6,17 +6,17 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/11 21:56:23 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/11/01 15:58:44 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
-# define NULL_GUARD(a) if(!a) return (NULL);
-# TRUE 1;
-# FALSE 0;
+# define NULL_GUARD(a) if(!(a)) return (NULL);
+# define ASSERT(a) if (!(a)) ASSERT_FAIL
 
 void				*ft_memset(void *ptr, int val, size_t n);
 void				ft_bzero(void *ptr, size_t b);
@@ -62,7 +62,7 @@ char				*ft_strsub(char const *str, unsigned int start, size_t len);
 char				*ft_strjoin(char const *a, char const *b);
 char				*ft_strtrim(char const *str);
 char				**ft_strsplit(char const *str, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -81,14 +81,31 @@ typedef struct		s_list
 }					t_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstdelone(t_list **lst, void (*del)(void *, size_t));
+void				ft_lstdel(t_list **lst, void (*del)(void *, size_t));
+void				ft_lstadd(t_list **lst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+void				*ft_lstpush(t_list **lst, void *content, size_t size);
+t_list				*ft_lstfind(t_list *lst,
+					char (*pred)(const void *, const void *), const void *data);
+void				ft_lstrm(t_list **lst, t_list *to_rm);
+
 void				ft_putstrarray(char **str);
 void				ft_putintarray(int *int_array, size_t size);
+void				ft_putmem(char *varname, void *var, size_t bytes);
 int					ft_sumarray(int *int_array, size_t size);
+
+# define GNL_BUFF 1024
+int					get_next_line(const int fd, char **line);
+
+typedef	struct	s_fileinfo
+{
+	int			fd;
+	long		i;
+	long		fill;
+	char		buff[GNL_BUFF + 1];
+}				t_fileinfo;
 
 #endif

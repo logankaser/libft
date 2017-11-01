@@ -6,18 +6,18 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:32:35 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/22 11:31:35 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/10/24 16:38:54 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *m, int value, size_t num)
+void	*ft_memset(void *m, int value, size_t size)
 {
-	unsigned byte;
+	unsigned bit;
 
-	byte = 0;
-	while (byte < num)
-		((unsigned char *)m)[byte++] = (unsigned char)value;
+	bit = 0;
+	while (bit < size)
+		((unsigned char *)m)[bit++] = (unsigned char)value;
 	return (m);
 }

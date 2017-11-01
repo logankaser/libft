@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 17:52:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 12:56:24 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/21 19:50:45 by lkaser            #+#    #+#             */
+/*   Updated: 2017/10/30 18:18:34 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_lstpush(t_list **lst, void *content, size_t size)
 {
-	size_t len;
+	t_list *new;
 
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	new = malloc(sizeof(t_list));
+	new->content = content;
+	new->content_size = size;
+	new->next = NULL;
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+	return (new);
 }

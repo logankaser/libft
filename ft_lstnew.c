@@ -6,18 +6,17 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 17:38:19 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/22 12:04:36 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/10/25 15:46:26 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t size)
 {
 	t_list *new;
 
 	new = (t_list *)malloc(sizeof(t_list));
-	NULL_GUARD(new);
 	if (!content)
 	{
 		new->content = NULL;
@@ -25,14 +24,14 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		new->content = (void *)malloc(content_size);
+		new->content = (void *)malloc(size);
 		if (!new->content)
 		{
 			free(new);
 			return (NULL);
 		}
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
+		ft_memcpy(new->content, content, size);
+		new->content_size = size;
 	}
 	new->next = NULL;
 	return (new);

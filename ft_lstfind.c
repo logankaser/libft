@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 17:52:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 12:56:24 by lkaser           ###   ########.fr       */
+/*   Created: 2017/10/12 13:47:45 by lkaser            #+#    #+#             */
+/*   Updated: 2017/10/25 16:08:27 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+t_list	*ft_lstfind(t_list *lst,
+		char (*pred)(const void *, const void *), const void *data)
 {
-	size_t len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	while (lst)
+	{
+		if (pred(lst->content, data))
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
 }

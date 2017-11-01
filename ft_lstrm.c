@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstrm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/19 17:52:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/10/26 12:56:24 by lkaser           ###   ########.fr       */
+/*   Created: 2017/10/12 13:47:45 by lkaser            #+#    #+#             */
+/*   Updated: 2017/10/30 14:36:56 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstrm(t_list **lst, t_list *to_rm)
 {
-	size_t len;
+	t_list *prev;
+	t_list *item;
 
-	if (!str)
-		return (0);
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	if (lst)
+	{
+		prev = NULL;
+		item = *lst;
+		while (item)
+		{
+			if (item == to_rm)
+			{
+				if (prev)
+					prev->next = item->next;
+				else
+					*lst = item->next;
+				free(item->content);
+				free(item);
+				break ;
+			}
+			prev = item;
+			item = item->next;
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/19 17:55:40 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/19 21:11:04 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/10/25 21:33:15 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,10 @@ char	*ft_strdup(const char *str)
 	unsigned	i;
 
 	len = ft_strlen(str);
+	NULL_GUARD(copy = malloc(len + 1));
 	i = 0;
-	copy = (char *)malloc(len + 1);
-	if (!copy)
-		return (NULL);
 	while (i < len)
-	{
-		copy[i] = str[i];
-		++i;
-	}
+		copy[i++] = *str++;
 	copy[i] = '\0';
 	return (copy);
 }
