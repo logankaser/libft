@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterror.c                                      :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/21 14:48:28 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/08 16:36:48 by lkaser           ###   ########.fr       */
+/*   Created: 2017/09/21 14:38:16 by lkaser            #+#    #+#             */
+/*   Updated: 2017/12/30 16:22:09 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puterror(char const *str)
+char	*ft_utoa_base(uintmax_t nbr, char *base_str, unsigned base)
 {
-	write(2, str, *str ? ft_strlen(str) : 0);
+	uintmax_t	n;
+	unsigned	digits;
+	char		*str;
+
+	digits = (nbr == 0);
+	n = nbr;
+	while (n)
+	{
+		n /= base;
+		++digits;
+	}
+	NULL_GUARD(str = malloc(digits + 1));
+	str[digits] = '\0';
+	while (digits)
+	{
+		--digits;
+		str[digits] = base_str[nbr % base];
+		nbr /= base;
+	}
+	return (str);
 }

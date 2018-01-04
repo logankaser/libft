@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterror.c                                      :+:      :+:    :+:   */
+/*   ft_in_range.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/21 14:48:28 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/08 16:36:48 by lkaser           ###   ########.fr       */
+/*   Created: 2017/11/15 13:47:41 by lkaser            #+#    #+#             */
+/*   Updated: 2017/11/16 14:06:08 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puterror(char const *str)
+t_bool	ft_in_range(const int i, const int low, const int high)
 {
-	write(2, str, *str ? ft_strlen(str) : 0);
+	return (i >= low && i <= high);
 }

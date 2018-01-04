@@ -1,54 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/21 14:38:16 by lkaser            #+#    #+#             */
-/*   Updated: 2017/12/21 20:09:57 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/12/29 17:27:50 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static unsigned	digits(int nbr)
+char			*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base)
 {
-	unsigned len;
+	intmax_t	n;
+	unsigned	digits;
+	char		*str;
 
-	len = 1 + nbr < 0;
-	while (nbr)
+	digits = (nbr <= 0);
+	n = nbr;
+	while (n)
 	{
-		nbr /= 10;
-		++len;
+		n /= base;
+		++digits;
 	}
-	return (len);
-}
-
-static void		fill_str(long nbr, char *str, unsigned *i)
-{
-	if (nbr >= 10 || nbr <= -10)
+	NULL_GUARD(str = malloc(digits + 1));
+	str[digits--] = '\0';
+	n = nbr;
+	while (digits)
 	{
-		fill_str(nbr / 10, str, i);
-		fill_str(nbr % 10, str, i);
+		str[digits] = base_str[nbr < 0 ? (nbr % base) * -1 : nbr % base];
+		nbr /= base;
+		--digits;
 	}
-	else
-		str[(*i)++] = '0' + (nbr < 0 ? -nbr : nbr);
-}
-
-char			*ft_itoa(long nbr)
-{
-	unsigned	len;
-	char		*out;
-	unsigned	i;
-
-	len = digits(nbr);
-	NULL_GUARD(out = malloc(len + 1));
-	i = 0;
-	if (nbr < 0)
-		out[i++] = '-';
-	fill_str(nbr, out, &i);
-	out[len] = '\0';
-	return (out);
+	str[0] = n < 0 ? '-' : base_str[nbr % base];
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/01 16:13:43 by lkaser           ###   ########.fr       */
+/*   Updated: 2017/12/30 14:17:36 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,18 @@
 # include <stdio.h>
 # include <unistd.h>
 # define NULL_GUARD(a) if(!(a)) return (NULL);
-# define ASSERT(a) if (!(a)) ASSERT_FAIL
+# define ASSERT(a) if (!(a)) {ASSERT_FAIL;}
+# define ANY2(x,a,b) (x == a || x == b)
+# define ANY3(x,a,b,c) (x == a || x == b || x == c)
+# define ANY4(x,a,b,c,d) (x == a || x == b || x == c || x == d)
+# define ANY5(x,a,b,c,d,e) (x == a || x == b || x == c || x == d || x == e)
+# define MATCH(a,b) if (a) b
+# define OR(a,b) else if (a) b
+# define OTHERWISE(a) else a
+# define FT_ITOA_BASE(nbr, base) ft_itoa_base(nbr, base, sizeof base - 1)
+# define FT_UTOA_BASE(nbr, base) ft_utoa_base(nbr, base, sizeof base - 1)
 
+typedef char		t_bool;
 void				*ft_memset(void *ptr, int val, size_t n);
 void				ft_bzero(void *ptr, size_t b);
 void				*ft_memcpy(void *dst, const void *src, size_t b);
@@ -37,6 +47,7 @@ char				*ft_strrchr(const char *str, int val);
 char				*ft_strstr(const char *str, const char *needle);
 char				*ft_strnstr(const char *str, const char *needle,
 					size_t size);
+char				*ft_wchar_utf8(wchar_t *wc);
 int					ft_strcmp(const char *a, const char *b);
 int					ft_strncmp(const char *a, const char *b, size_t size);
 int					ft_atoi(const char *str);
@@ -62,9 +73,16 @@ char				*ft_strsub(char const *str, unsigned int start, size_t len);
 char				*ft_strjoin(char const *a, char const *b);
 char				*ft_strtrim(char const *str);
 char				**ft_strsplit(char const *str, char c);
+t_bool				ft_str_has_only(const char *str, const char *has_only);
+void				ft_strappend(char **str, char const *add);
+void				ft_strprepend(char const *add, char **str);
 char				*ft_itoa(long n);
+char				*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base);
+char				*ft_utoa_base(uintmax_t nbr, char *base_str,
+							unsigned base);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+void				ft_puterror(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
@@ -96,6 +114,7 @@ void				ft_putstrarray(char **str);
 void				ft_putintarray(int *int_array, size_t size);
 void				ft_putmem(char *varname, void *var, size_t bytes);
 int					ft_sumarray(int *int_array, size_t size);
+t_bool				ft_in_range(const int i, const int low, const int high);
 
 # define GNL_BUFF 1024
 
