@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2017/12/30 14:17:36 by lkaser           ###   ########.fr       */
+/*   Updated: 2018/01/04 14:44:15 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+
+/*
+** Macros.
+*/
+
 # define NULL_GUARD(a) if(!(a)) return (NULL);
 # define ASSERT(a) if (!(a)) {ASSERT_FAIL;}
 # define ANY2(x,a,b) (x == a || x == b)
@@ -27,6 +32,10 @@
 # define FT_ITOA_BASE(nbr, base) ft_itoa_base(nbr, base, sizeof base - 1)
 # define FT_UTOA_BASE(nbr, base) ft_utoa_base(nbr, base, sizeof base - 1)
 
+/*
+** Memory.
+*/
+
 typedef char		t_bool;
 void				*ft_memset(void *ptr, int val, size_t n);
 void				ft_bzero(void *ptr, size_t b);
@@ -35,6 +44,11 @@ void				*ft_memccpy(void *dst, const void *src, int c, size_t b);
 void				*ft_memmove(void *dst, const void *src, size_t b);
 void				*ft_memchr(const void *s, int c, size_t b);
 int					ft_memcmp(const void *m1, const void *m2, size_t b);
+
+/*
+** Strings.
+*/
+
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *str);
 char				*ft_strcpy(char *dst, const char *src);
@@ -89,7 +103,10 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-unsigned			ft_sqrt(unsigned i);
+
+/*
+** Linked lists.
+*/
 
 typedef struct		s_list
 {
@@ -110,11 +127,18 @@ t_list				*ft_lstfind(t_list *lst,
 					char (*pred)(const void *, const void *), const void *data);
 void				ft_lstrm(t_list **lst, t_list *to_rm);
 
+/*
+** Misc.
+*/
+
 void				ft_putstrarray(char **str);
 void				ft_putintarray(int *int_array, size_t size);
 void				ft_putmem(char *varname, void *var, size_t bytes);
-int					ft_sumarray(int *int_array, size_t size);
 t_bool				ft_in_range(const int i, const int low, const int high);
+
+/*
+** Get next line.
+*/
 
 # define GNL_BUFF 1024
 

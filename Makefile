@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/20 13:52:57 by lkaser            #+#    #+#              #
-#    Updated: 2017/12/30 16:35:47 by lkaser           ###   ########.fr        #
+#    Updated: 2018/01/04 14:46:29 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@
 NAME = libft.a
 LIST = ft_atoi \
 ft_bzero \
+ft_in_range \
 ft_isalnum \
 ft_isalpha \
 ft_isascii \
 ft_isdigit \
 ft_isprint \
 ft_itoa \
-ft_utoa_base \
 ft_itoa_base \
 ft_lstadd \
 ft_lstdel \
@@ -52,7 +52,6 @@ ft_putnbr_fd \
 ft_putstr \
 ft_putstr_fd \
 ft_putstrarray \
-ft_sqrt \
 ft_strcat \
 ft_strchr \
 ft_strclr \
@@ -82,13 +81,11 @@ ft_strtrim \
 ft_str_has_only \
 ft_strprepend \
 ft_strappend \
-ft_sumarray \
 ft_tolower \
 ft_toupper \
-ft_in_range \
+ft_utoa_base \
 ft_wchar_utf8 \
 get_next_line
-
 
 SRC = $(addsuffix .c, $(LIST))
 OBJ = $(addsuffix .o, $(LIST))
