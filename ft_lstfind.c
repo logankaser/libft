@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/12 13:47:45 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/01 16:04:47 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:22:21 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:22:22 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 t_list	*ft_lstfind(t_list *lst,
-		char (*pred)(const void *, const void *), const void *data)
+	t_bool (*pred)(const void *, const void *), const void *data)
 {
 	while (lst)
 	{
