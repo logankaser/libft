@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/06 20:20:41 by lkaser            #+#    #+#              #
-#    Updated: 2018/10/27 19:02:36 by lkaser           ###   ########.fr        #
+#    Updated: 2018/10/27 19:21:52 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ ft_strncmp ft_strncpy ft_strnequ ft_strnew ft_strnstr ft_strrchr ft_strsplit \
 ft_strstr ft_strsub ft_strtrim ft_str_has_only ft_strprepend ft_strappend \
 ft_tolower ft_toupper ft_utoa_base ft_wchar_utf8 ft_vector ft_uvector \
 get_next_line ft_printf format ft_fnv ft_map ft_map_internal
+
+VPATH = src
 
 SRC_DIR = .
 OBJ_DIR = obj
