@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/09 19:30:53 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/15 20:21:52 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:28:19 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:28:21 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int					get_next_line(const int fd, char **line)
 		if (end < fi->fill)
 			return (1);
 	}
-	if (!(end = fill_line(fi, line)))
+	if ((end = fill_line(fi, line)) <= 0)
 		ft_lstrm(&fdlst, node);
 	return (end);
 }

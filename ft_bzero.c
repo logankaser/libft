@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/18 11:32:35 by lkaser            #+#    #+#             */
-/*   Updated: 2017/12/28 19:48:39 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:21:16 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:21:18 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include "libft.h"
 
-void	ft_bzero(void *m, size_t size)
+void	ft_bzero(void *m, size_t n)
 {
-	unsigned bit;
+	uint8_t		*b8;
+	uint64_t	*b64;
 
-	bit = 0;
-	if (!(size % 8))
-	{
-		size /= 8;
-		while (bit < size)
-			((unsigned long long*)m)[bit++] = 0;
-	}
-	else if (!(size % 4))
-	{
-		size /= 4;
-		while (bit < size)
-			((unsigned*)m)[bit++] = 0;
-	}
-	else
-		while (bit < size)
-			((unsigned char *)m)[bit++] = 0;
+	b8 = m;
+	while (n && n % 8)
+		b8[--n] = 0;
+	n /= 8;
+	b64 = m;
+	while (n)
+		b64[--n] = 0;
 }

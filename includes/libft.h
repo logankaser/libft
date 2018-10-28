@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2018/01/04 14:44:15 by lkaser           ###   ########.fr       */
+/*   Updated: 2018/10/14 15:28:41 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 
 /*
 ** Macros.
@@ -31,12 +32,21 @@
 # define OTHERWISE(a) else a
 # define FT_ITOA_BASE(nbr, base) ft_itoa_base(nbr, base, sizeof base - 1)
 # define FT_UTOA_BASE(nbr, base) ft_utoa_base(nbr, base, sizeof base - 1)
+# define TRUE (1)
+# define FALSE (0)
+
+typedef char		t_bool;
+
+/*
+** Math.
+*/
+double				ft_min(double a, double b);
+double				ft_max(double a, double b);
 
 /*
 ** Memory.
 */
 
-typedef char		t_bool;
 void				*ft_memset(void *ptr, int val, size_t n);
 void				ft_bzero(void *ptr, size_t b);
 void				*ft_memcpy(void *dst, const void *src, size_t b);
@@ -65,11 +75,13 @@ char				*ft_wchar_utf8(wchar_t *wc);
 int					ft_strcmp(const char *a, const char *b);
 int					ft_strncmp(const char *a, const char *b, size_t size);
 int					ft_atoi(const char *str);
+double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+t_bool				ft_isanyof(char c, const char *these);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				*ft_memalloc(size_t size);
@@ -79,6 +91,7 @@ void				ft_strdel(char **str);
 void				ft_strclr(char *str);
 void				ft_striter(char *str, void (*f)(char *));
 void				ft_striteri(char *str, void (*f)(unsigned int, char *));
+void				ft_striter_u(char *str, int (*fn)(int));
 char				*ft_strmap(char const *str, char (*f)(char));
 char				*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 int					ft_strequ(char const *a, char const *b);
@@ -96,7 +109,8 @@ char				*ft_utoa_base(uintmax_t nbr, char *base_str,
 							unsigned base);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
-void				ft_puterror(char const *s);
+void				ft_puterror(char const *error);
+void				ft_exit(char const *error, int code);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
@@ -104,8 +118,10 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
+typedef t_bool		(*t_compare)(const void *, const void *);
+
 /*
-** Linked lists.
+** List.
 */
 
 typedef struct		s_list
@@ -123,18 +139,91 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				*ft_lstpush(t_list **lst, void *content, size_t size);
-t_list				*ft_lstfind(t_list *lst,
-					char (*pred)(const void *, const void *), const void *data);
+void				*ft_lstpop(t_list **lst);
+t_list				*ft_lstfind(t_list *lst, t_compare pred, const void *data);
 void				ft_lstrm(t_list **lst, t_list *to_rm);
 
 /*
-** Misc.
+** Hash.
 */
 
-void				ft_putstrarray(char **str);
-void				ft_putintarray(int *int_array, size_t size);
-void				ft_putmem(char *varname, void *var, size_t bytes);
-t_bool				ft_in_range(const int i, const int low, const int high);
+uint64_t			ft_fnv_64(const uint8_t *data, size_t size);
+uint32_t			ft_fnv_32(const uint8_t *data, size_t size);
+
+/*
+** Map.
+*/
+
+typedef struct		s_map
+{
+	void			**data;
+	unsigned		count;
+	unsigned		capacity;
+	unsigned		key_size;
+}					t_map;
+
+uint32_t			ft_map_hash(t_map *m, const char *key);
+void				ft_map_init(t_map *m, unsigned key_size, unsigned size);
+void				ft_map_resize_(t_map *m, unsigned size);
+void				ft_map_insert(t_map *m, uint32_t hash, void *ptr);
+void				ft_map_set(t_map *m, const char *key, void *ptr);
+void				*ft_map_get(t_map *m, const char *key);
+void				*ft_map_remove(t_map *m, const char *key);
+void				ft_map_clear(t_map *m, void (*free_fn)(void *));
+
+/*
+** Vector.
+*/
+
+typedef struct		s_vector
+{
+	void			**data;
+	unsigned		length;
+	unsigned		capacity;
+}					t_vector;
+
+void				ft_vector_init(t_vector *v);
+void				ft_vector_resize(t_vector *v, unsigned size);
+void				ft_vector_push(t_vector *v, void *d);
+void				ft_vector_del(t_vector *v);
+
+/*
+** Unboxed Vector.
+*/
+
+typedef struct		s_uvector
+{
+	uint8_t			*data;
+	unsigned		capacity;
+	unsigned		length;
+	unsigned		width;
+}					t_uvector;
+
+void				ft_uvector_init(t_uvector *v, unsigned size);
+void				ft_uvector_resize(t_uvector *v, unsigned size);
+void				ft_uvector_push(t_uvector *v, const void *d);
+void				*ft_uvector_pop(t_uvector *v, void *item);
+void				*ft_uvector_get(t_uvector *v, unsigned i);
+
+/*
+** Dynamic String, Uses unboxed vector
+** These functions exist to make using unboxed vectors as strings
+** easier.
+*/
+
+size_t				ft_string_append(t_uvector *v, const char *add);
+size_t				ft_string_appendn(
+	t_uvector *v, const char *add, size_t len);
+
+/*
+** Pair.
+*/
+
+typedef struct		s_pair
+{
+	void			*fst;
+	void			*snd;
+}					t_pair;
 
 /*
 ** Get next line.
@@ -151,5 +240,19 @@ typedef	struct		s_fileinfo
 	long			fill;
 	char			buff[GNL_BUFF + 1];
 }					t_fileinfo;
+
+/*
+** Sorting.
+*/
+
+void				ft_qsort(void *array[], int size, t_compare pred);
+t_bool				ft_compare_str_asc(const void *a, const void *b);
+t_bool				ft_compare_int_asc(const void *a, const void *b);
+
+/*
+** Printf.
+*/
+
+int					ft_printf(char *format, ...);
 
 #endif
