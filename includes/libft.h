@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2018/10/27 18:56:30 by lkaser           ###   ########.fr       */
+/*   Updated: 2018/10/27 19:19:04 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ t_list				*ft_lstfind(t_list *lst, t_compare pred, const void *data);
 void				ft_lstrm(t_list **lst, t_list *to_rm);
 
 /*
-<<<<<<< HEAD
 ** Hash.
 */
 
@@ -167,8 +166,6 @@ void				*ft_map_remove(t_map *m, const char *key);
 void				ft_map_clear(t_map *m, void (*free_fn)(void *));
 
 /*
-=======
->>>>>>> 22e5d0c76301b8eecb67ee7e6f4f3601b9021c8a
 ** Vector.
 */
 
