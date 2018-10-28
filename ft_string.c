@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterror.c                                      :+:      :+:    :+:   */
+/*   ft_string.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:23:59 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:24:00 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:31 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:25:34 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puterror(char const *error)
+size_t		ft_string_append(t_uvector *v, const char *add)
 {
-	write(2, error, *error ? ft_strlen(error) : 0);
-	write(2, "\n", 1);
+	return (ft_string_appendn(v, add, ft_strlen(add)));
 }
 
-void	ft_exit(char const *error, int code)
+size_t		ft_string_appendn(t_uvector *v, const char *add, size_t size)
 {
-	write(2, error, *error ? ft_strlen(error) : 0);
-	write(2, "\n", 1);
-	exit(code);
+	char	null;
+	size_t	len;
+
+	if (size < 1)
+		return (0);
+	if (v->length > 0)
+		ft_uvector_pop(v, NULL);
+	null = '\0';
+	len = 0;
+	while (len++ < size)
+		ft_uvector_push(v, add++);
+	ft_uvector_push(v, &null);
+	return (len);
 }

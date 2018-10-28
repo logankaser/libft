@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrarray.c                                   :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/22 14:22:33 by lkaser            #+#    #+#             */
-/*   Updated: 2017/09/22 15:55:53 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:22:50 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:22:51 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstrarray(char **str)
+void	*ft_lstpop(t_list **lst)
 {
-	ft_putstr("[ ");
-	while (*str)
+	t_list	*tmp;
+	void	*content;
+
+	content = NULL;
+	if (*lst)
 	{
-		ft_putchar('\"');
-		ft_putstr(*str);
-		ft_putchar('\"');
-		++str;
-		if (*str)
-			ft_putstr(", ");
+		tmp = *lst;
+		*lst = tmp->next;
+		content = tmp->content;
+		free(tmp);
 	}
-	ft_putstr(" ]");
-	ft_putchar('\n');
+	return (content);
 }

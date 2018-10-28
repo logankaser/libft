@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_in_range.c                                      :+:      :+:    :+:   */
+/*   ft_min_max.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 13:47:41 by lkaser            #+#    #+#             */
-/*   Updated: 2017/11/16 14:06:08 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/11 13:43:24 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/11 13:46:17 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_bool	ft_in_range(const int i, const int low, const int high)
+double	ft_min(double a, double b)
 {
-	return (i >= low && i <= high);
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+double	ft_max(double a, double b)
+{
+	if (a < b)
+		return (b);
+	return (a);
 }
