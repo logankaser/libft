@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2018/10/27 19:19:04 by lkaser           ###   ########.fr       */
+/*   Updated: 2018/11/10 16:03:02 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char				*ft_strnstr(const char *str, const char *needle,
 char				*ft_wchar_utf8(wchar_t *wc);
 int					ft_strcmp(const char *a, const char *b);
 int					ft_strncmp(const char *a, const char *b, size_t size);
-int					ft_atoi(const char *str);
+intmax_t			ft_atoi(const char *str);
 double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -101,13 +101,13 @@ char				*ft_itoa(long n);
 char				*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base);
 char				*ft_utoa_base(uintmax_t nbr, char *base_str,
 							unsigned base);
-void				ft_putchar(char c);
+void				ft_putchar(int c);
 void				ft_putstr(char const *s);
 void				ft_puterror(char const *error);
 void				ft_exit(char const *error, int code);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
-void				ft_putchar_fd(char c, int fd);
+void				ft_putchar_fd(int c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
