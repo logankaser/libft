@@ -40,8 +40,8 @@ uvector_pop
 ```
 **Use uvectors as strings**
 ```
-strprepend
-strappend
+string_append
+string_appendn
 ````
 ### vector (boxed vector)
 ```
