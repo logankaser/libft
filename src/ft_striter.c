@@ -14,17 +14,15 @@
 
 void	ft_striter(char *str, void (*fn)(char *))
 {
-	if (str && fn)
-		while (*str)
-			fn(str++);
+	while (*str)
+		fn(str++);
 }
 
 void	ft_striter_u(char *str, int (*fn)(int))
 {
-	if (str && fn)
-		while (*str)
-		{
-			*str = fn(*str);
-			++str;
-		}
+	while (*str)
+	{
+		*str = fn(*str);
+		++str;
+	}
 }

@@ -15,7 +15,6 @@ void	ft_striteri(char *str, void (*fn)(unsigned i, char *))
 	unsigned i;
 
 	i = 0;
-	if (str && fn)
-		while (*str)
-			fn(i++, str++);
+	while (*str)
+		fn(i++, str++);
 }

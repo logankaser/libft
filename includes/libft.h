@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2018/11/10 16:03:02 by lkaser           ###   ########.fr       */
+/*   Updated: 2018/11/10 18:03:35 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char				*ft_strnstr(const char *str, const char *needle,
 char				*ft_wchar_utf8(wchar_t *wc);
 int					ft_strcmp(const char *a, const char *b);
 int					ft_strncmp(const char *a, const char *b, size_t size);
-intmax_t			ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -97,7 +97,7 @@ char				**ft_strsplit(char const *str, char c);
 t_bool				ft_str_has_only(const char *str, const char *has_only);
 void				ft_strappend(char **str, char const *add);
 void				ft_strprepend(char const *add, char **str);
-char				*ft_itoa(long n);
+char				*ft_itoa(int n);
 char				*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base);
 char				*ft_utoa_base(uintmax_t nbr, char *base_str,
 							unsigned base);

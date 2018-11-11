@@ -17,7 +17,6 @@ char	*ft_strsub(char const *str, unsigned start, size_t len)
 	char		*sub;
 	unsigned	i;
 
-	NULL_GUARD(str);
 	sub = malloc(len + 1);
 	NULL_GUARD(sub);
 	sub[len] = '\0';

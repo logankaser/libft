@@ -47,9 +47,8 @@ char			**ft_strsplit(const char *str, const char d)
 	unsigned	w;
 	unsigned	chr;
 
-	NULL_GUARD(str);
 	size = num_words(str, d) + 1;
-	NULL_GUARD(split_words = (char **)malloc(sizeof(char*) * size));
+	NULL_GUARD(split_words = malloc(sizeof(char*) * size));
 	w = 0;
 	while (w < size - 1)
 	{

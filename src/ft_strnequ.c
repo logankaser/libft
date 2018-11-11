@@ -17,9 +17,8 @@ int	ft_strnequ(char const *a, char const *b, size_t n)
 	unsigned i;
 
 	i = 0;
-	if (a && b)
-		while ((*a || *b) && i++ < n)
-			if (*a++ != *b++)
-				return (0);
-	return (1);
+	while ((*a || *b) && i++ < n)
+		if (*a++ != *b++)
+			return (FALSE);
+	return (TRUE);
 }

@@ -17,7 +17,6 @@ char	*ft_strmap(const char *str, char (*fn)(char))
 	char		*new;
 	unsigned	i;
 
-	NULL_GUARD((str && fn));
 	i = ft_strlen(str);
 	new = malloc(i + 1);
 	NULL_GUARD(new);

@@ -18,7 +18,6 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	t_list *current;
 	t_list *prev;
 
-	NULL_GUARD((lst && f));
 	prev = NULL;
 	head = f(ft_lstnew(lst->content, lst->content_size));
 	current = head;

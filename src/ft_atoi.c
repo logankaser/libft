@@ -12,20 +12,22 @@
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	char		neg;
-	intmax_t	out;
+	char		negative;
+	unsigned	out;
 
 	out = 0;
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		++str;
-	if ((neg = *str == '-') || *str == '+')
+	negative = *str == '-';
+	if (negative || *str == '+')
 		++str;
 	while (*str >= '0' && *str <= '9')
 	{
 		out *= 10;
-		out += *str++ - '0';
+		out += (int)(*str - '0');
+		++str;
 	}
-	return (neg ? -out : out);
+	return (negative ? -out : out);
 }

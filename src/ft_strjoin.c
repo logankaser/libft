@@ -17,14 +17,12 @@ char	*ft_strjoin(char const *a, char const *b)
 	char		*c;
 	unsigned	len;
 
-	len = (a ? ft_strlen(a) : 0) + (b ? ft_strlen(b) : 0);
+	len = ft_strlen(a) + ft_strlen(b);
 	NULL_GUARD(c = malloc(len + 1));
 	c[len] = '\0';
-	if (a)
-		while (*a)
-			*c++ = *a++;
-	if (b)
-		while (*b)
-			*c++ = *b++;
+	while (*a)
+		*c++ = *a++;
+	while (*b)
+		*c++ = *b++;
 	return (c - len);
 }
