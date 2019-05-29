@@ -15,11 +15,10 @@
 char	*ft_strsub(char const *str, unsigned start, size_t len)
 {
 	char		*sub;
-	unsigned	i;
+	size_t		i;
 
 	sub = malloc(len + 1);
 	NULL_GUARD(sub);
-	sub[len] = '\0';
 	i = 0;
 	str += start;
 	while (i < len)
@@ -27,5 +26,6 @@ char	*ft_strsub(char const *str, unsigned start, size_t len)
 		sub[i] = str[i];
 		++i;
 	}
+	sub[len] = '\0';
 	return (sub);
 }

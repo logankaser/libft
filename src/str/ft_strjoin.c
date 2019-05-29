@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_min_max.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 13:43:24 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/11 13:46:17 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:50 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:25:52 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double	ft_min(double a, double b)
-{
-	if (a > b)
-		return (b);
-	return (a);
-}
+#include "libft.h"
 
-double	ft_max(double a, double b)
+char	*ft_strjoin(char const *a, char const *b)
 {
-	if (a < b)
-		return (b);
-	return (a);
+	char		*c;
+	unsigned	len;
+
+	len = (a ? ft_strlen(a) : 0) + (b ? ft_strlen(b) : 0);
+	NULL_GUARD(c = malloc(len + 1));
+	c[len] = '\0';
+	if (a)
+		while (*a)
+			*c++ = *a++;
+	if (b)
+		while (*b)
+			*c++ = *b++;
+	return (c - len);
 }

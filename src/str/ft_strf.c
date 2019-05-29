@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:23:31 by lkaser            #+#    #+#             */
-/*   Updated: 2018/10/27 19:30:44 by lkaser           ###   ########.fr       */
+/*   Created: 2019/03/15 19:02:14 by lkaser            #+#    #+#             */
+/*   Updated: 2019/03/15 19:02:15 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include "libft.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include "ft_printf.h"
 
-void	*ft_memset(void *m, int value, size_t n)
+char	*ft_strf(const char *format, ...)
 {
-	uint8_t		*b8;
+	t_uvector	s;
+	va_list		args;
 
-	b8 = m;
-	while (n)
-		b8[--n] = value;
-	return (m);
+	if (format)
+	{
+		ft_uvector_init(&s, 1);
+		va_start(args, format);
+		format_iter(&s, (char*)format, args);
+		va_end(args);
+		return ((char*)s.data);
+	}
+	return (NULL);
 }

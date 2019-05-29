@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:25:22 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:25:23 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:22:41 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:22:43 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char		*copy;
-	unsigned	len;
-	unsigned	i;
+	t_list *head;
+	t_list *current;
+	t_list *prev;
 
-	len = ft_strlen(str);
-	NULL_GUARD(copy = malloc(len + 1));
-	i = 0;
-	while (i < len)
-		copy[i++] = *str++;
-	copy[i] = '\0';
-	return (copy);
+	NULL_GUARD((lst && f));
+	prev = NULL;
+	head = f(ft_lstnew(lst->content, lst->content_size));
+	current = head;
+	lst = lst->next;
+	while (lst)
+	{
+		prev = current;
+		current = f(ft_lstnew(lst->content, lst->content_size));
+		prev->next = current;
+		lst = lst->next;
+	}
+	return (head);
 }

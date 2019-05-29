@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:25:50 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:25:52 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:26:08 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:26:10 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *a, char const *b)
+char	*ft_strmapi(const char *str, char (*fn)(unsigned, char))
 {
-	char		*c;
-	unsigned	len;
+	char		*new;
+	unsigned	i;
 
-	len = ft_strlen(a) + ft_strlen(b);
-	NULL_GUARD(c = malloc(len + 1));
-	c[len] = '\0';
-	while (*a)
-		*c++ = *a++;
-	while (*b)
-		*c++ = *b++;
-	return (c - len);
+	NULL_GUARD((str && fn));
+	i = ft_strlen(str);
+	new = malloc(i + 1);
+	if (!new)
+		return (NULL);
+	new[i] = '\0';
+	i = 0;
+	while (*str)
+	{
+		new[i] = fn(i, *str);
+		++i;
+		++str;
+	}
+	return (new);
 }

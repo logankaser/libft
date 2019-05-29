@@ -6,7 +6,7 @@
 /*   By: lkaser <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 19:06:03 by lkaser            #+#    #+#             */
-/*   Updated: 2017/12/30 12:28:51 by lkaser           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:42:14 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,19 @@ typedef struct			s_printf
 	t_data				data;
 	enum e_type			type;
 	enum e_length		len;
-	t_bool				pre;
-	t_bool				pad_zero;
-	t_bool				left_align;
-	t_bool				pre_plus;
-	t_bool				pad_pos;
+	bool				pre;
+	bool				pad_zero;
+	bool				left_align;
+	bool				pre_plus;
+	bool				pad_pos;
 	int					width;
 	int					prec;
 }						t_printf;
 
 void					format_print(t_printf pf, t_uvector *s);
+void					format_iter(t_uvector *s, char *f, va_list args);
 int						ft_printf(char *format, ...);
+int						ft_fprintf(FILE *stream, const char *format, ...);
+char					*ft_strf(const char *format, ...);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char			*ft_itoa(int nbr)
+char			*ft_itoa(long nbr)
 {
 	return (FT_ITOA_BASE(nbr, "0123456789"));
 }

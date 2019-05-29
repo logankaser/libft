@@ -18,7 +18,7 @@ char			*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base)
 	unsigned	digits;
 	char		*str;
 
-	digits = nbr <= 0;
+	digits = (nbr <= 0);
 	n = nbr;
 	while (n)
 	{

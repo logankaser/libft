@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:26:27 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:26:30 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:26 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:25:27 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *a, char const *b, size_t n)
+int	ft_strequ(char const *a, char const *b)
 {
-	unsigned i;
-
-	i = 0;
-	while ((*a || *b) && i++ < n)
+	while (*a || *b)
 		if (*a++ != *b++)
-			return (FALSE);
-	return (TRUE);
+			return (false);
+	return (true);
 }

@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfind.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:22:21 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:22:22 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:55 by lkaser            #+#    #+#             */
+/*   Updated: 2019/04/24 18:51:19 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstfind(t_list *lst,
-	t_bool (*pred)(const void *, const void *), const void *data)
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	while (lst)
+	size_t	i;
+	size_t	srcl;
+	size_t	dstl;
+
+	i = 0;
+	srcl = ft_strlen(src);
+	dstl = ft_strlen(dst);
+	if (size <= dstl)
+		return (size + srcl);
+	while ((i < size - dstl - 1) && src[i])
 	{
-		if (pred(lst->content, data))
-			return (lst);
-		lst = lst->next;
+		dst[i + dstl] = src[i];
+		++i;
 	}
-	return (NULL);
+	dst[i + dstl] = '\0';
+	return (dstl + srcl);
 }

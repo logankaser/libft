@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 20:21:03 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:21:05 by lkaser           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:40:48 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 double	ft_atof(const char *str)
 {
-	t_bool		neg;
-	t_bool		point;
+	bool		neg;
+	bool		point;
 	unsigned	fac;
 	double		out;
 
 	out = 0.0;
 	fac = 1;
-	point = FALSE;
+	point = false;
 	if (!ft_strcmp("nan", str))
 		return (NAN);
 	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
@@ -34,7 +34,7 @@ double	ft_atof(const char *str)
 		if (point)
 			fac *= 10;
 		if (*str == '.')
-			point = TRUE;
+			point = true;
 		else
 			out = out * 10.0f + (double)(*str - '0');
 		++str;

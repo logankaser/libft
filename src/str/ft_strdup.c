@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:26:08 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:26:10 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:22 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:25:23 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *str, char (*fn)(unsigned, char))
+char	*ft_strdup(const char *str)
 {
-	char		*new;
-	unsigned	i;
+	char	*copy;
+	size_t	size;
 
-	i = ft_strlen(str);
-	new = malloc(i + 1);
-	if (!new)
-		return (NULL);
-	new[i] = '\0';
-	i = 0;
-	while (*str)
-	{
-		new[i] = fn(i, *str);
-		++i;
-		++str;
-	}
-	return (new);
+	size = ft_strlen(str) + 1;
+	NULL_GUARD(copy = malloc(size));
+	ft_memcpy(copy, str, size);
+	return (copy);
 }

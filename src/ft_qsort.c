@@ -6,14 +6,14 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 20:24:36 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:24:38 by lkaser           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:41:41 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	partition(void *array[], int lo, int hi,
-	t_bool (*comp)(const void *, const void *))
+	bool (*comp)(const void *, const void *))
 {
 	void	*pivot;
 	int		i;
@@ -40,7 +40,7 @@ static int	partition(void *array[], int lo, int hi,
 }
 
 static void	sort(void *array[], int lo, int hi,
-	t_bool (*comp)(const void *, const void *))
+	bool (*comp)(const void *, const void *))
 {
 	int	p;
 
@@ -53,17 +53,17 @@ static void	sort(void *array[], int lo, int hi,
 }
 
 void		ft_qsort(void *array[], int size,
-	t_bool (*comp)(const void *, const void *))
+	bool (*comp)(const void *, const void *))
 {
 	sort(array, 0, size - 1, comp);
 }
 
-t_bool		ft_compare_str_asc(const void *a, const void *b)
+bool		ft_compare_str_asc(const void *a, const void *b)
 {
 	return (ft_strcmp(a, b) > 0);
 }
 
-t_bool		ft_compare_int_asc(const void *a, const void *b)
+bool		ft_compare_int_asc(const void *a, const void *b)
 {
 	return (*((int*)a) > *((int*)b));
 }

@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/06 20:25:00 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:25:02 by lkaser           ###   ########.fr       */
+/*   Created: 2018/07/06 20:25:44 by lkaser            #+#    #+#             */
+/*   Updated: 2018/07/06 20:25:47 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_strclr(char *str)
+void	ft_striteri(char *str, void (*fn)(unsigned i, char *))
 {
-	ft_bzero(str, ft_strlen(str));
+	unsigned i;
+
+	i = 0;
+	if (str && fn)
+		while (*str)
+			fn(i++, str++);
 }

@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/06 20:28:19 by lkaser            #+#    #+#             */
-/*   Updated: 2018/07/06 20:28:21 by lkaser           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:43:07 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_fileinfo	*new_fi(const int fd)
 	return (fi);
 }
 
-static char			is_fd(const void *a, const void *b)
+static bool			is_fd(const void *a, const void *b)
 {
 	return (((t_fileinfo*)a)->fd == *(const int*)b);
 }

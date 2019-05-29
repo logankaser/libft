@@ -15,23 +15,13 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	uint8_t			*d;
-	const uint64_t	*sr;
-	uint64_t		*de;
+	size_t	i;
 
-	d = dest;
-	while (n && n % 8)
+	i = 0;
+	while (i < n)
 	{
-		--n;
-		d[n] = ((uint8_t*)src)[n];
-	}
-	n /= 8;
-	de = dest;
-	sr = src;
-	while (n)
-	{
-		--n;
-		de[n] = sr[n];
+		((uint8_t*)dest)[i] = ((uint8_t*)src)[i];
+		++i;
 	}
 	return (dest);
 }

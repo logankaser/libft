@@ -6,7 +6,7 @@
 /*   By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 11:03:56 by lkaser            #+#    #+#             */
-/*   Updated: 2018/11/10 18:03:35 by lkaser           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:40:13 by lkaser           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 /*
 ** Macros.
@@ -32,10 +33,8 @@
 # define OTHERWISE(a) else a
 # define FT_ITOA_BASE(nbr, base) ft_itoa_base(nbr, base, sizeof base - 1)
 # define FT_UTOA_BASE(nbr, base) ft_utoa_base(nbr, base, sizeof base - 1)
-# define TRUE (1)
-# define FALSE (0)
-
-typedef char		t_bool;
+# define MIN(a, b) (((a) > (b)) ? a : b)
+# define MAX(a, b) (((a) > (b)) ? b : a)
 
 /*
 ** Memory.
@@ -48,6 +47,9 @@ void				*ft_memccpy(void *dst, const void *src, int c, size_t b);
 void				*ft_memmove(void *dst, const void *src, size_t b);
 void				*ft_memchr(const void *s, int c, size_t b);
 int					ft_memcmp(const void *m1, const void *m2, size_t b);
+uint16_t			ft_byteswap2(const uint16_t u16);
+uint32_t			ft_byteswap4(const uint32_t u32);
+uint64_t			ft_byteswap8(const uint64_t u64);
 
 /*
 ** Strings.
@@ -68,14 +70,14 @@ char				*ft_strnstr(const char *str, const char *needle,
 char				*ft_wchar_utf8(wchar_t *wc);
 int					ft_strcmp(const char *a, const char *b);
 int					ft_strncmp(const char *a, const char *b, size_t size);
-int					ft_atoi(const char *str);
+intmax_t			ft_atoi(const char *str);
 double				ft_atof(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
-t_bool				ft_isanyof(char c, const char *these);
+bool				ft_isanyof(char c, const char *these);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				*ft_memalloc(size_t size);
@@ -94,10 +96,10 @@ char				*ft_strsub(char const *str, unsigned int start, size_t len);
 char				*ft_strjoin(char const *a, char const *b);
 char				*ft_strtrim(char const *str);
 char				**ft_strsplit(char const *str, char c);
-t_bool				ft_str_has_only(const char *str, const char *has_only);
+bool				ft_str_has_only(const char *str, const char *has_only);
 void				ft_strappend(char **str, char const *add);
 void				ft_strprepend(char const *add, char **str);
-char				*ft_itoa(int n);
+char				*ft_itoa(long n);
 char				*ft_itoa_base(intmax_t nbr, char *base_str, unsigned base);
 char				*ft_utoa_base(uintmax_t nbr, char *base_str,
 							unsigned base);
@@ -112,7 +114,7 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-typedef t_bool		(*t_compare)(const void *, const void *);
+typedef bool		(*t_compare)(const void *, const void *);
 
 /*
 ** List.
@@ -125,10 +127,12 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef void		t_deleter(void *thing, size_t size);
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **lst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **lst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **lst, t_list *new);
+void				ft_lstdelone(t_list **lst, t_deleter *del);
+void				ft_lstdel(t_list **lst, t_deleter *del);
+void				ft_lstadd(t_list **lst, t_list *new_lst);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
@@ -148,18 +152,34 @@ uint32_t			ft_fnv_32(const uint8_t *data, size_t size);
 ** Map.
 */
 
+typedef struct		s_bucket
+{
+	uint32_t		hash;
+	char			*key;
+	void			*value;
+	struct s_bucket *next;
+}					t_bucket;
+
 typedef struct		s_map
 {
-	void			**data;
+	t_bucket		**data;
 	unsigned		count;
 	unsigned		capacity;
 	unsigned		key_size;
 }					t_map;
 
-uint32_t			ft_map_hash(t_map *m, const char *key);
-void				ft_map_init(t_map *m, unsigned key_size, unsigned size);
+/*
+** Map Internal.
+*/
+
+uint32_t			ft_map_hash_(t_map *m, const char *key);
 void				ft_map_resize_(t_map *m, unsigned size);
-void				ft_map_insert(t_map *m, uint32_t hash, void *ptr);
+
+/*
+** Map Public.
+*/
+
+void				ft_map_init(t_map *m, unsigned key_size, unsigned size);
 void				ft_map_set(t_map *m, const char *key, void *ptr);
 void				*ft_map_get(t_map *m, const char *key);
 void				*ft_map_remove(t_map *m, const char *key);
@@ -210,6 +230,24 @@ size_t				ft_string_appendn(
 	t_uvector *v, const char *add, size_t len);
 
 /*
+** Array Based Queue.
+*/
+
+typedef struct		s_queue
+{
+	void			**data;
+	unsigned		capacity;
+	unsigned		length;
+	unsigned		head;
+	unsigned		tail;
+}					t_queue;
+
+void				ft_queue_init(t_queue *q, unsigned min_capacity);
+void				ft_queue_push(t_queue *q, void *d);
+void				*ft_queue_pop(t_queue *q);
+void				*ft_queue_peek(t_queue *q);
+
+/*
 ** Pair.
 */
 
@@ -230,7 +268,7 @@ double				ft_max(double a, double b);
 ** Get next line.
 */
 
-# define GNL_BUFF 1024
+# define GNL_BUFF 4096
 
 int					get_next_line(const int fd, char **line);
 
@@ -247,13 +285,15 @@ typedef	struct		s_fileinfo
 */
 
 void				ft_qsort(void *array[], int size, t_compare pred);
-t_bool				ft_compare_str_asc(const void *a, const void *b);
-t_bool				ft_compare_int_asc(const void *a, const void *b);
+bool				ft_compare_str_asc(const void *a, const void *b);
+bool				ft_compare_int_asc(const void *a, const void *b);
 
 /*
 ** Printf.
 */
 
 int					ft_printf(char *format, ...);
+int					ft_fprintf(FILE *stream, const char *format, ...);
+char				*ft_strf(const char *format, ...);
 
 #endif
