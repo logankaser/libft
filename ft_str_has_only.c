@@ -1,0 +1,1 @@
+src/str/ft_str_has_only.c
