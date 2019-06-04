@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for x in $(find src -name "*.c");
+for x in $(find src include -name "*.[hc]");
 do
 	ln -s $x $(basename $x)
 done

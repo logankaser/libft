@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for x in *.c;
+for x in *.c *.h;
 do
 	unlink $x
 done
