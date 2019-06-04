@@ -6,7 +6,7 @@
 #    By: lkaser <lkaser@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/06 20:20:41 by lkaser            #+#    #+#              #
-#    Updated: 2019/05/29 16:26:30 by lkaser           ###   ########.fr        #
+#    Updated: 2019/06/04 10:44:39 by lkaser           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ DEP = $(OBJ:%.o=%.d)
 
 MAKEOPTS=-j4
 
-OPT = -O3 -flto=full
+#OPT = -O3 -flto=full -march=native
 
-CPPFLAGS = -Wall -Wextra -Werror -g \
--I include -march=native $(OPT) \
+CPPFLAGS = -Wall -Wextra -Werror \
+-I include $(OPT) \
 #-fsanitize=address -fsanitize=undefined
 
 
